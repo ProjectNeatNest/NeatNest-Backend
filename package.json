@@ -1,0 +1,28 @@
+{
+    "name": "back-end",
+    "module": "index.ts",
+    "type": "module",
+    "scripts": {
+        "phenix": "rm -r node_modules && bun i",
+        "dev": "tsx watch src/index.ts"
+    },
+    "private": true,
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.2",
+        "@types/bun": "latest",
+        "@types/express": "^5.0.3",
+        "@types/jsonwebtoken": "^9.0.10",
+        "prettier": "^3.6.2",
+        "tsx": "^4.20.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "dotenv": "^17.2.0",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "zod": "^4.0.2"
+    }
+}
