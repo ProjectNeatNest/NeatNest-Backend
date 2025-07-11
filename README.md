@@ -1,3 +1,4 @@
+# Creación de ramas en GIT
 
 1. Antes de crear cualquier rama, haz un pull de main para asegurarte de que no haya cambios pendientes.
 2. Ahora creas una rama con `git branch <nombre_rama>`
@@ -20,8 +21,9 @@ No Continuous Hyphens: Do not use continuous hyphens. feature--new-login can be 
 - No Trailing Hyphens: Do not end your branch name with a hyphen. For example, feature-new-login- is not a good practice.
 - Descriptive: The name should be descriptive and concise, ideally reflecting the work done on the branch.
 
-
 ## Branch Prefixes
+
+NOSOTRAS PONDREMOS EL PRIMER PREFIJO NUESTRO NOMBRE
 
 - Using prefixes in branch names helps to quickly identify the purpose of the branches. Here are some common types of branches with their corresponding prefixes:
 
@@ -39,8 +41,8 @@ No Continuous Hyphens: Do not use continuous hyphens. feature--new-login can be 
 
 Here are some samples of good branch names following the above conventions:
 
-- feature/T-456-user-authentication
-- bugfix/T-789-fix-header-styling
-- hotfix/T-321-security-patch
-- release/v2.0.1
-- docs/T-654-update-readme
+- nastya/feature/T-456-user-authentication
+- andrea/bugfix/T-789-fix-header-styling
+- raquel/hotfix/T-321-security-patch
+- lydia/release/v2.0.1
+- nastya/docs/T-654-update-readme
