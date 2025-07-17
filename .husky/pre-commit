@@ -1,0 +1,22 @@
+# 🚫 Bloquear commits en la rama main
+branch="$(git symbolic-ref --short HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "🚫 Está prohibido hacer commits directamente en la rama main."
+  exit 1
+fi
+
+# ✨ Formatear archivos staged con Prettier
+echo "🧹 Formateando código con Prettier..."
+
+# Obtiene archivos staged que Prettier puede formatear
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|jsx|tsx|json|css|scss|md|html)$')
+
+if [ "$staged_files" ]; then
+  bunx prettier --write $staged_files
+
+  # Volver a añadir los archivos ya formateados al staging
+  echo "$staged_files" | xargs git add
+else
+  echo "✅ No hay archivos relevantes para formatear."
+fi
