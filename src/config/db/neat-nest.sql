@@ -32,23 +32,30 @@ CREATE TABLE IF NOT EXISTS housing (
 CREATE TABLE IF NOT EXISTS areas (
     area_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    -- color TEXT,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    housing_id INTEGER,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (housing_id) REFERENCES housing (housing_id)
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
     task_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
     area_id INTEGER,
-    user_id INTEGER,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    limit_date TIMESTAMP,
     duration INTERVAL,
-    is_completed BOOLEAN NOT NULL,
     periodicity INTEGER,
-    FOREIGN KEY (area_id) REFERENCES areas (area_id),
-    FOREIGN KEY (user_id) REFERENCES users (user_id)
+    FOREIGN KEY (area_id) REFERENCES areas (area_id)
 );
+
+CREATE TABLE IF NOT EXISTS task_details (
+    task_details_id SERIAL PRIMARY KEY, 
+    user_id INTEGER NOT NULL, 
+    limit_date DATE,
+    task_id INTEGER NOT NULL,
+    is_completed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    FOREIGN KEY (task_id) REFERENCES tasks (task_id)
+); 
 
 CREATE TABLE IF NOT EXISTS users_housing (
     user_id INTEGER NOT NULL,
@@ -58,13 +65,3 @@ CREATE TABLE IF NOT EXISTS users_housing (
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (housing_id) REFERENCES housing (housing_id)
 );
-
-CREATE TABLE IF NOT EXISTS housing_areas (
-    housing_id INTEGER NOT NULL,
-    area_id INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (housing_id, area_id),
-    FOREIGN KEY (housing_id) REFERENCES housing (housing_id),
-    FOREIGN KEY (area_id) REFERENCES areas (area_id)
-);
-
