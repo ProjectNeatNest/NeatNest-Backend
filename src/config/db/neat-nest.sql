@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users_housing;
 
-DROP TABLE IF EXISTS housing_areas;
+DROP TABLE IF EXISTS task_details;
 
 DROP TABLE IF EXISTS tasks;
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS task_details (
 CREATE TABLE IF NOT EXISTS users_housing (
     user_id INTEGER NOT NULL,
     housing_id INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    is_Admin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (user_id, housing_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (housing_id) REFERENCES housing (housing_id)
