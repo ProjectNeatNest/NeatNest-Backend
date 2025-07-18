@@ -6,7 +6,7 @@ import { sendQuery } from '../config/db/dbConfig.js';
 import { registerSchema, loginSchema } from '../schemas/userSchemas.js';
 import HTTPError from '../models/HTTPError.js';
 
-const userRouter = express.Router();
+export const userRouter = express.Router();
 
 userRouter.get('/', async (req, res) => {
    const users = await sendQuery('SELECT * FROM users');
@@ -66,4 +66,3 @@ userRouter.post('/login', async (req, res) =>
 
 });
 
-export default userRouter;
