@@ -74,15 +74,16 @@ userRouter.post('/login', async (req, res) => {
     res.send({ message: 'User logged in', data: token });
 });
 
-//TODO: Añadir encriptación de contraseña
 userRouter.patch('/:user_id', async (req, res) => {
     const { user_id } = req.params;
 
     const { name, surname, surname_2, email, username, password } = req.body;
 
+    const encryptedPassword = bcrypt.hashSync(password, 10);
+
     const [updatedUser] = await sendQuery(
         'UPDATE users SET name = $1, surname = $2, surname_2 = $3, email = $4, username = $5, password = $6 WHERE user_id = $7 RETURNING *',
-        [name, surname, surname_2, email, username, password, user_id]
+        [name, surname, surname_2, email, username, encryptedPassword, user_id]
     );
 
     if (!updatedUser) throw new HTTPError(404, 'User not found.');
