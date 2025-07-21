@@ -4,18 +4,21 @@ import cors from 'cors';
 
 import { userRouter } from './routes/user.routes.js';
 import { housingRouter } from './routes/housing.routes.js';
+import { areaRouter } from './routes/area.routes.js';
+import { taskRouter } from './routes/task.routes.js';
 
-const app = express(); 
+const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json()); 
+app.use(express.json());
 
-app.use('/users', userRouter); 
+app.use('/users', userRouter);
+app.use('/housings', housingRouter);
+app.use('/areas', areaRouter);
+app.use('/tasks', taskRouter);
 
-app.use('/housings', housingRouter)
-
-const PORT = process.env.PORT || 2222; 
+const PORT = process.env.PORT || 2222;
 app.listen(PORT, () => {
-   console.log(`Server running on port ${PORT}`);
-})
+    console.log(`Server running on port ${PORT}`);
+});
