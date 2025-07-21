@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS areas (
     name TEXT NOT NULL UNIQUE,
     housing_id INTEGER,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (housing_id) REFERENCES housing (housing_id)
+    FOREIGN KEY (housing_id) REFERENCES housings (housing_id)
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
@@ -63,5 +63,5 @@ CREATE TABLE IF NOT EXISTS users_housings (
     is_Admin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (user_id, housing_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (housing_id) REFERENCES housing (housing_id)
+    FOREIGN KEY (housing_id) REFERENCES housings (housing_id)
 );
