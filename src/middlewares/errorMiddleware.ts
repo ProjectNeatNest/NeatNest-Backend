@@ -1,23 +1,26 @@
-import { z } from 'zod/v4';
+import { ZodError } from 'zod/v4';
+import { NextFunction, Request, Response } from 'express';
 
-export default function prettifyZodError(error: z.ZodError, separator = ', ') {
-    if (error.issues.length === 1 && error.issues[0].path.length === 0) {
-        return error.issues[0].message;
+import HTTPError from '../models/HTTPError.js';
+import prettifyZodErrors from '../helpers/prettifyZodErrors.js';
+
+export default function errorMiddleware(
+    error: Error | HTTPError | ZodError,
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    console.log(error.message);
+
+    if (error instanceof HTTPError) {
+        res.status(error.statusCode).send({ error: error.message });
+        return;
+    }
+    if (error instanceof ZodError) {
+        const prettifiedErrors = prettifyZodErrors(error);
+        res.status(400).send({ error: prettifiedErrors });
+        return;
     }
 
-    const errors = error.issues.reduce(
-        (acc, issue) => {
-            const path = issue.path[0] as string;
-            if (path in acc) {
-                acc[path] += `${separator}${issue.message}`;
-            }
-
-            return {
-                ...acc,
-                [path]: issue.message,
-            };
-        },
-        {} as { [key: string]: string }
-    );
-    return errors;
+    res.status(500).send({ error: error.message });
 }
