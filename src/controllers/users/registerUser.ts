@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 
-import { sendQuery } from '../config/db/dbConfig.js';
-import { registerSchema } from '../schemas/userSchemas.js';
-import HTTPError from '../models/HTTPError.js';
+import { sendQuery } from '../../config/db/dbConfig.js';
+import { registerSchema } from '../../schemas/userSchemas.js';
+import HTTPError from '../../models/HTTPError.js';
 
 export default async function registerUser(req: Request, res: Response) {
     const validatedUser = registerSchema.parse(req.body);

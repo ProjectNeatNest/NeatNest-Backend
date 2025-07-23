@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import { sendQuery } from '../config/db/dbConfig.js';
-import { loginSchema } from '../schemas/userSchemas.js';
-import HTTPError from '../models/HTTPError.js';
+import { sendQuery } from '../../config/db/dbConfig.js';
+import { loginSchema } from '../../schemas/userSchemas.js';
+import HTTPError from '../../models/HTTPError.js';
 
 export default async function loginUser(req: Request, res: Response) {
     const { email, password } = loginSchema.parse(req.body);
