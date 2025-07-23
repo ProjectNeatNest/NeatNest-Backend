@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import { sendQuery } from '../config/db/dbConfig.js';
-import HTTPError from '../models/HTTPError.js';
+import { sendQuery } from '../../config/db/dbConfig.js';
+import HTTPError from '../../models/HTTPError.js';
 
 export default async function deleteUser(req: Request, res: Response) {
     const { user_id } = req.params;
