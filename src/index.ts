@@ -16,15 +16,15 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use('/users', usersRouter);
-app.use('/areas', areasRouter);
 app.use('/housings', housingsRouter);
+app.use('/areas', areasRouter);
 app.use('/tasks', tasksRouter);
+
+app.use(errorMiddleware);
 
 app.use(/(.*)/, (req, res) => {
     res.status(404).send({ error: 'Route not stablished' });
 });
-
-app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 2222;
 
