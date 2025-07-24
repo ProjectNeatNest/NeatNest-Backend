@@ -9,7 +9,7 @@ export default async function updateArea(req: Request, res: Response) {
     const { name } = req.body;
 
     const [updatedArea] = await sendQuery(
-        'UPDATE areas SER name = $1 WHERE area_id = $2 RETURNING *',
+        'UPDATE areas SET name = $1 WHERE area_id = $2 RETURNING *',
         [name, area_id]
     );
 

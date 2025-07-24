@@ -7,7 +7,7 @@ export default async function deleteTask(req: Request, res: Response) {
     const { task_id } = req.params;
 
     const [taskFound] = await sendQuery(
-        'SELECT * FROM tasks WHERE tasks_id = $1',
+        'SELECT * FROM tasks WHERE task_id = $1',
         [task_id]
     );
 

@@ -14,7 +14,7 @@ export default async function deleteArea(req: Request, res: Response) {
     if (!areaFound) throw new HTTPError(404, 'Area not found.');
 
     const [deletedArea] = await sendQuery(
-        'DELETE FROM areas WHERE housing_id = $1 RETURNING *',
+        'DELETE FROM areas WHERE area_id = $1 RETURNING *',
         [area_id]
     );
 
