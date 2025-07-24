@@ -4,7 +4,7 @@ import { sendQuery } from '../../config/db/dbConfig.js';
 import HTTPError from '../../models/HTTPError.js';
 
 export default async function createHousing(req: Request, res: Response) {
-    const housingName = req.body;
+    const { name: housingName } = req.body;
 
     const [housingByName] = await sendQuery(
         'SELECT * FROM housings WHERE name = $1',
