@@ -31,5 +31,8 @@ export default async function loginUser(req: Request, res: Response) {
         expiresIn: '30 days',
     });
 
-    res.send({ message: 'User logged in', data: token });
+    res.send({
+        message: 'User logged in',
+        data: { token: token, user: tokenData },
+    });
 }
