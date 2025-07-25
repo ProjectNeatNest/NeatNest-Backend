@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { sendQuery } from '../../config/db/dbConfig.js';
 import { registerSchema } from '../../schemas/userSchemas.js';
 import HTTPError from '../../models/HTTPError.js';
+import jwt from 'jsonwebtoken';
 
 export default async function registerUser(req: Request, res: Response) {
     const validatedUser = registerSchema.parse(req.body);
@@ -35,5 +36,18 @@ export default async function registerUser(req: Request, res: Response) {
         ]
     );
 
-    res.status(201).send({ message: 'User registered', data: newUser });
+    const tokenData = {
+        user_id: newUser.user_id,
+        username: newUser.username,
+        email: newUser.email,
+    };
+
+    const token = jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+        expiresIn: '30 days',
+    });
+
+    res.status(201).send({
+        message: 'User registered',
+        data: { token: token, user: newUser },
+    });
 }
