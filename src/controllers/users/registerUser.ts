@@ -13,6 +13,7 @@ export default async function registerUser(req: Request, res: Response) {
         'SELECT * FROM users WHERE email = $1',
         [validatedUser.email]
     );
+    console.log(userByEmail);
 
     const [userByUsername] = await sendQuery(
         'SELECT * FROM users WHERE username = $1',
