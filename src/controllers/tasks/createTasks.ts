@@ -7,7 +7,7 @@ export default async function createTask(req: Request, res: Response) {
     const { name, area_id, periodicity, duration } = req.body;
 
     if (!name || !area_id || !periodicity) {
-        throw new HTTPError(400, 'Faltan campos obligatorios');
+        throw new HTTPError(400, 'Missing required fields.');
     }
 
     const [taskByName] = await sendQuery(

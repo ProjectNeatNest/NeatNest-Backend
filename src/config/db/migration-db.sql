@@ -32,9 +32,15 @@ CREATE TABLE IF NOT EXISTS housings (
 CREATE TABLE IF NOT EXISTS areas (
     area_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    housing_id INTEGER,
+    housing_id INTEGER NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (housing_id) REFERENCES housings (housing_id)
+);
+
+CREATE TABLE IF NOT EXISTS default_areas ( 
+    defaultArea_id SERIAL PRIMARY KEY, 
+    name TEXT NOT NULL, 
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
@@ -65,3 +71,4 @@ CREATE TABLE IF NOT EXISTS users_housings (
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (housing_id) REFERENCES housings (housing_id)
 );
+
