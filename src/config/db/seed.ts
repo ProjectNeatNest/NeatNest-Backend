@@ -1,14 +1,19 @@
-import { db } from "./dbConfig.js";
+import { db } from './dbConfig.js';
 
 export function seedDB() {
-   db.query(`
-      INSERT INTO 
-         users (name, email, password)  
-      VALUES 
-         ('Juan', 'juan@gmail.com', '123456789'),
-         ('Pedro', 'pedro@gmail.com', '123456789'),
-         ('Carlos', 'carlos@gmail.com', '123456789'),
-   `); 
+    db.query(`
+      INSERT INTO
+         default_areas (name)
+      VALUES
+         ('Comedor'),
+         ('Cocina'),
+         ('Baño'),
+         ('Salón'),
+         ('Aseo'),
+         ('Terraza'),
+         ('Balcón'),
+         ('Jardín') 
+   `);
 }
 
-seedDB(); 
+seedDB();
