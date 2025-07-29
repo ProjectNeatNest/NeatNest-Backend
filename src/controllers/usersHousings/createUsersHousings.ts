@@ -15,21 +15,22 @@ export default async function createUsersHousings(req: Request, res: Response) {
     );
 
     await sendQuery(
-        'INSERT INTO user_housings (user_id, housing_id, is_admin) VALUES ($1, $2, $3)',
+        'INSERT INTO users_housings (user_id, housing_id, is_admin) VALUES ($1, $2, $3)',
         [user_id, newHousing.housing_id, true]
     );
 
-    for (const cohab of cohabitants) {
+    for (const email of cohabitants) {
         const [existingCohabitant] = await sendQuery(
             'SELECT user_id FROM users WHERE email = $1',
-            [cohab.email]
+            [email]
         );
         if (!existingCohabitant) continue;
 
         await sendQuery(
-            'INSERT INTO user_housings (user_id, housing_id) VALUES ($1, $2)',
+            'INSERT INTO users_housings (user_id, housing_id) VALUES ($1, $2)',
             [existingCohabitant.user_id, newHousing.housing_id]
         );
+
     }
 
     // TODO: Añadir las areas
