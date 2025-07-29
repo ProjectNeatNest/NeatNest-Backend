@@ -2,29 +2,40 @@ import { Request, Response } from 'express';
 
 import { sendQuery } from '../../config/db/dbConfig.js';
 import HTTPError from '../../models/HTTPError.js';
+import { AuthorizedRequest } from '../../config/types.js';
 
 export default async function createUsersHousings(req: Request, res: Response) {
-    const { user_id, housing_id, is_Admin } = req.body;
+    const { user_id } = (req as AuthorizedRequest).user;
 
-    if (!user_id || !housing_id || !is_Admin) {
-        throw new HTTPError(400, 'Missing required fields.');
+    const { name, cohabitants, defaultAreas } = req.body;
+
+    const [newHousing] = await sendQuery(
+        'INSERT INTO housings (name) VALUES ($1) RETURNING *',
+        [name]
+    );
+
+    await sendQuery(
+        'INSERT INTO user_housings (user_id, housing_id, is_admin) VALUES ($1, $2, $3)',
+        [user_id, newHousing.housing_id, true]
+    );
+
+    for (const cohab of cohabitants) {
+        const [existingCohabitant] = await sendQuery(
+            'SELECT user_id FROM users WHERE email = $1',
+            [cohab.email]
+        );
+        if (!existingCohabitant) continue;
+
+        await sendQuery(
+            'INSERT INTO user_housings (user_id, housing_id) VALUES ($1, $2)',
+            [existingCohabitant.user_id, newHousing.housing_id]
+        );
     }
 
-    const [userHousingByUserAndHousing] = await sendQuery(
-        'SELECT * FROM users_housings WHERE user_id = $1 AND housing_id = $2',
-        [user_id, housing_id]
-    );
-
-    if (userHousingByUserAndHousing)
-        throw new HTTPError(400, 'User already exists in housing.');
-
-    const [newUserHousing] = await sendQuery(
-        'INSERT INTO users_housings (user_id, housing_id, is_Admin) VALUES ($1, $2, $3) RETURNING *',
-        [user_id, housing_id, is_Admin]
-    );
+    // TODO: Añadir las areas
 
     res.status(201).send({
-        message: 'User created in housing',
-        data: newUserHousing,
+        message: 'Housing created successfully',
+        data: newHousing,
     });
 }

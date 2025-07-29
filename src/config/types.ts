@@ -57,7 +57,8 @@ export interface UsersHousing {
 }
 
 export interface AuthorizedUser {
-    id: number;
+    user_id: number;
+    email: string;
     username: string;
 }
 
