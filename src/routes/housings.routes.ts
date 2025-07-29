@@ -5,10 +5,11 @@ import createHousing from '../controllers/housings/createHousing.js';
 import updateHousing from '../controllers/housings/updateHousing.js';
 import deleteHousing from '../controllers/housings/deleteHousing.js';
 import { userAuth } from '../middlewares/userAuth.js';
+import createUsersHousings from '../controllers/usersHousings/createUsersHousings.js';
 
 export const housingsRouter = express.Router();
 
 housingsRouter.get('/', userAuth, getAllHousings);
-housingsRouter.post('/', userAuth, createHousing);
+housingsRouter.post('/', userAuth, createUsersHousings);
 housingsRouter.patch('/:housing_id', userAuth, updateHousing);
 housingsRouter.delete('/:housing_id', userAuth, deleteHousing);
