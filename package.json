@@ -1,38 +1,40 @@
 {
-  "name": "back-end",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "phenix": "rm -r node_modules && bun i",
-    "dev": "tsx watch src/index.ts",
-    "prepare": "husky"
-  },
-  "private": true,
-  "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/better-sqlite3": "^7.6.13",
-    "@types/bun": "latest",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/morgan": "^1.9.10",
-    "@types/pg": "^8.15.4",
-    "husky": "^9.1.7",
-    "prettier": "^3.6.2",
-    "tsx": "^4.20.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "better-sqlite3": "^12.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.0",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.1",
-    "pg": "^8.16.3",
-    "zod": "^4.0.2"
-  }
+    "name": "back-end",
+    "module": "index.ts",
+    "type": "module",
+    "scripts": {
+        "phenix": "rm -r node_modules && bun i",
+        "dev": "tsx watch src/index.ts",
+        "prepare": "husky",
+        "init-db": "tsx src/config/db/initDb.ts",
+        "seed-db": "tsx src/config/db/seed.ts"
+    },
+    "private": true,
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.2",
+        "@types/better-sqlite3": "^7.6.13",
+        "@types/bun": "latest",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/morgan": "^1.9.10",
+        "@types/pg": "^8.15.4",
+        "husky": "^9.1.7",
+        "prettier": "^3.6.2",
+        "tsx": "^4.20.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "better-sqlite3": "^12.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.0",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.1",
+        "pg": "^8.16.3",
+        "zod": "^4.0.2"
+    }
 }

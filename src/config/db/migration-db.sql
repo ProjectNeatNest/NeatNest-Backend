@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS task_details (
 CREATE TABLE IF NOT EXISTS users_housings (
     user_id INTEGER NOT NULL,
     housing_id INTEGER NOT NULL,
-    is_Admin BOOLEAN DEFAULT FALSE,
+    is_admin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (user_id, housing_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (housing_id) REFERENCES housings (housing_id)

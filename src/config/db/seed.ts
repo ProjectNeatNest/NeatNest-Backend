@@ -1,19 +1,12 @@
-import { db } from './dbConfig.js';
+import { sendQuery } from './dbConfig.js';
+import fs from 'node:fs';
+import path from 'node:path';
 
-export function seedDB() {
-    db.query(`
-      INSERT INTO
-         default_areas (name)
-      VALUES
-         ('Comedor'),
-         ('Cocina'),
-         ('Baño'),
-         ('Salón'),
-         ('Aseo'),
-         ('Terraza'),
-         ('Balcón'),
-         ('Jardín') 
-   `);
+const seedFilePath = path.join(import.meta.dirname, 'seed-db.sql');
+const seedFile = fs.readFileSync(seedFilePath, 'utf8');
+
+export async function seedDB() {
+    await sendQuery(seedFile);
 }
 
 seedDB();
