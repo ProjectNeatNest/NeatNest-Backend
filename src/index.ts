@@ -4,11 +4,11 @@ import cors from 'cors';
 
 import { usersRouter } from './routes/users.routes.js';
 import { housingsRouter } from './routes/housings.routes.js';
-import { areasRouter } from './routes/areas.routes.js';
+import { areasRouter } from './routes/housingsAreas.routes.js';
 import { defaultAreasRouter } from './routes/defaultAreas.routes.js';
 import { tasksRouter } from './routes/tasks.routes.js';
 import { taskDetailsRouter } from './routes/taskDetails.routes.js';
-import { usersHousingsRouter } from './routes/usersHousings.routes.js';
+import { housingsUsersRouter } from './routes/housingsUsers.routes.js';
 
 import errorMiddleware from './middlewares/errorMiddleware.js';
 
@@ -22,7 +22,7 @@ app.use('/users', usersRouter);
 app.use('/housings', housingsRouter);
 app.use('/defaultAreas', defaultAreasRouter);
 app.use('/taskDetails', taskDetailsRouter);
-app.use('/usersHousings', usersHousingsRouter);
+app.use('/usersHousings', housingsUsersRouter);
 
 app.use(errorMiddleware);
 

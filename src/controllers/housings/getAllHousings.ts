@@ -14,6 +14,5 @@ export default async function getAllHousings(req: Request, res: Response) {
         [ids]
     )
     
-
     res.send({ message: 'Housings list', data: housings });
 }
