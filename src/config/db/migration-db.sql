@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS default_areas (
 CREATE TABLE IF NOT EXISTS tasks (
     task_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    area_id INTEGER,
+    user_id INTEGER,
+    area_id INTEGER NOT NULL,
     limit_date DATE,
     is_completed BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

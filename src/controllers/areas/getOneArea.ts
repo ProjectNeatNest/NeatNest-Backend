@@ -1,11 +1,8 @@
 import { Request, Response } from 'express';
 
 import { sendQuery } from '../../config/db/dbConfig.js';
-import { AuthorizedRequest } from '../../config/types.js';
 
 export default async function getOneArea(req: Request, res: Response) {
-   const { user_id } = (req as AuthorizedRequest).user;
-
    const { housing_id, area_id } = req.body; 
 
    const area = await sendQuery(
