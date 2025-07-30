@@ -20,9 +20,7 @@ app.use(express.json());
 
 app.use('/users', usersRouter);
 app.use('/housings', housingsRouter);
-app.use('/areas', areasRouter);
 app.use('/defaultAreas', defaultAreasRouter);
-app.use('/tasks', tasksRouter);
 app.use('/taskDetails', taskDetailsRouter);
 app.use('/usersHousings', usersHousingsRouter);
 
