@@ -34,19 +34,12 @@ export interface DefaultAreas {
 export interface Tasks {
     task_id: number;
     name: string;
-    area_id: number;
-    created_at: Date;
-    duration: string;
-    periodicity: number;
-}
-
-export interface TaskDetails {
-    task_details_id: number;
     user_id: number;
+    area_id: number;
     limit_date: Date | null;
-    task_id: number;
     is_completed: boolean;
     created_at: Date;
+    duration: string;
 }
 
 export interface UsersHousing {
