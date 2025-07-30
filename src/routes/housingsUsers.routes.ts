@@ -10,5 +10,5 @@ export const housingsUsersRouter = express.Router({ mergeParams: true });;
 
 housingsUsersRouter.get('/', userAuth, getAllUsersHousings);
 housingsUsersRouter.post('/', userAuth, createUsersHousings);
-housingsUsersRouter.patch('/:user_housing_id', userAuth, updateUsersHousings);
-housingsUsersRouter.delete('/:user_housing_id', userAuth, deleteUsersHousings);
+housingsUsersRouter.patch('/:user_id', userAuth, updateUsersHousings);
+housingsUsersRouter.delete('/:user_id', userAuth, deleteUsersHousings);
