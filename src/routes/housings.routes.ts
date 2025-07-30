@@ -9,16 +9,19 @@ import createUsersHousings from '../controllers/usersHousings/createUsersHousing
 import { areasRouter } from './areas.routes.js';
 
 import { userAuth } from '../middlewares/userAuth.js';
+import { housingOwnership } from '../middlewares/housingOwnership.js';
 import { adminAuth } from '../middlewares/adminAuth.js';
 
 export const housingsRouter = express.Router();
 
-housingsRouter.get('/', userAuth, adminAuth, getAllHousings);
+housingsRouter.get('/', userAuth, getAllHousings);
 housingsRouter.post('/', userAuth, createUsersHousings);
-housingsRouter.patch('/:housing_id', userAuth, updateHousing);
-housingsRouter.delete('/:housing_id', userAuth, deleteHousing);
+housingsRouter.patch('/:housing_id', userAuth, housingOwnership, updateHousing);
+housingsRouter.delete('/:housing_id', userAuth, housingOwnership, adminAuth, deleteHousing);
 
-housingsRouter.use('/:housing_id', areasRouter);
+
+// Routing to /housings/:housing_id
+housingsRouter.use('/:housing_id', userAuth, housingOwnership, areasRouter);
 
 
 

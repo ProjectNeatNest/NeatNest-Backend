@@ -23,7 +23,7 @@ app.use('/housings', housingsRouter);
 app.use('/areas', areasRouter);
 app.use('/defaultAreas', defaultAreasRouter);
 app.use('/tasks', tasksRouter);
-app.use('/tasDetails', taskDetailsRouter);
+app.use('/taskDetails', taskDetailsRouter);
 app.use('/usersHousings', usersHousingsRouter);
 
 app.use(errorMiddleware);

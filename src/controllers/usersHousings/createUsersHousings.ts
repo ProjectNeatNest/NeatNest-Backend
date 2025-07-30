@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 import { sendQuery } from '../../config/db/dbConfig.js';
-import HTTPError from '../../models/HTTPError.js';
 import { AuthorizedRequest } from '../../config/types.js';
 
 export default async function createUsersHousings(req: Request, res: Response) {

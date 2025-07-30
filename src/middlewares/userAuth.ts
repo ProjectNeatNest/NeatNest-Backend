@@ -11,11 +11,11 @@ export function userAuth(req: Request, res: Response, next: NextFunction) {
         typeof authorization !== 'string' ||
         !authorization.startsWith('Bearer ')
     )
-        throw new HTTPError(401, 'Token no existente o inválido');
+        throw new HTTPError(401, 'Invalid or non-existent Token.');
 
     const token = authorization.split(' ')[1];
 
-    if (!token) throw new HTTPError(401, 'No se encontró el token');
+    if (!token) throw new HTTPError(401, 'Token not found.');
 
     try {
         const verifiedUser = jwt.verify(
@@ -30,6 +30,6 @@ export function userAuth(req: Request, res: Response, next: NextFunction) {
         next();
     } catch (error) {
         console.error('JWT verification error:', error);
-        throw new HTTPError(401, 'Token no válido');
+        throw new HTTPError(401, 'Non-valid Token.');
     }
 }

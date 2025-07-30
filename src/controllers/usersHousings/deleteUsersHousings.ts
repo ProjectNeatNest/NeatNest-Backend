@@ -15,8 +15,6 @@ export default async function deleteUsersHousings(
 ) {
     const { user_id, housing_id } = req.params;
 
-    const currentUserId = req.user?.user_id;
-
     if (!user_id || !housing_id)
         throw new HTTPError(400, 'Missing required fields.');
 
@@ -28,14 +26,6 @@ export default async function deleteUsersHousings(
     if (userHousingFound.length === 0) {
         throw new HTTPError(404, 'User not found in housing.');
     }
-
-    const [currentUserHousing] = await sendQuery(
-        'SELECT * FROM users_housings WHERE user_id = $1 AND housing_id = $2 AND is_Admin = TRUE',
-        [currentUserId, housing_id]
-    );
-
-    if (!currentUserHousing)
-        throw new HTTPError(404, 'Only admins can delete users from housing.');
 
     if (userHousingFound[0].is_Admin) {
         const adminCount = await sendQuery(
