@@ -1,7 +1,6 @@
 import express from 'express';
 
 import getAllHousings from '../controllers/housings/getAllHousings.js';
-import createHousing from '../controllers/housings/createHousing.js';
 import updateHousing from '../controllers/housings/updateHousing.js';
 import deleteHousing from '../controllers/housings/deleteHousing.js';
 import createUsersHousings from '../controllers/usersHousings/createUsersHousings.js';

@@ -5,9 +5,7 @@ import cors from 'cors';
 import { usersRouter } from './routes/users.routes.js';
 import { housingsRouter } from './routes/housings.routes.js';
 import { areasRouter } from './routes/housingsAreas.routes.js';
-import { defaultAreasRouter } from './routes/defaultAreas.routes.js';
 import { tasksRouter } from './routes/tasks.routes.js';
-import { taskDetailsRouter } from './routes/taskDetails.routes.js';
 import { housingsUsersRouter } from './routes/housingsUsers.routes.js';
 
 import errorMiddleware from './middlewares/errorMiddleware.js';
@@ -21,9 +19,7 @@ app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/housings', housingsRouter);
 app.use('/areas', areasRouter);
-app.use('/defaultAreas', defaultAreasRouter);
 app.use('/tasks', tasksRouter);
-app.use('/taskDetails', taskDetailsRouter);
 app.use('/usersHousings', housingsUsersRouter);
 
 app.use(errorMiddleware);
