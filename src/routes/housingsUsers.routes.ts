@@ -6,9 +6,9 @@ import updateUsersHousings from '../controllers/usersHousings/updateUsersHousing
 import deleteUsersHousings from '../controllers/usersHousings/deleteUsersHousings.js';
 import { userAuth } from '../middlewares/userAuth.js';
 
-export const usersHousingsRouter = express.Router();
+export const housingsUsersRouter = express.Router({ mergeParams: true });;
 
-usersHousingsRouter.get('/', userAuth, getAllUsersHousings);
-usersHousingsRouter.post('/', userAuth, createUsersHousings);
-usersHousingsRouter.patch('/:user_housing_id', userAuth, updateUsersHousings);
-usersHousingsRouter.delete('/:user_housing_id', userAuth, deleteUsersHousings);
+housingsUsersRouter.get('/', userAuth, getAllUsersHousings);
+housingsUsersRouter.post('/', userAuth, createUsersHousings);
+housingsUsersRouter.patch('/:user_housing_id', userAuth, updateUsersHousings);
+housingsUsersRouter.delete('/:user_housing_id', userAuth, deleteUsersHousings);

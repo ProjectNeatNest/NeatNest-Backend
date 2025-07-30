@@ -6,11 +6,12 @@ import updateHousing from '../controllers/housings/updateHousing.js';
 import deleteHousing from '../controllers/housings/deleteHousing.js';
 import createUsersHousings from '../controllers/usersHousings/createUsersHousings.js';
 
-import { areasRouter } from './areas.routes.js';
+import { areasRouter } from './housingsAreas.routes.js';
 
 import { userAuth } from '../middlewares/userAuth.js';
 import { housingOwnership } from '../middlewares/housingOwnership.js';
 import { adminAuth } from '../middlewares/adminAuth.js';
+import { housingsUsersRouter } from './housingsUsers.routes.js';
 
 export const housingsRouter = express.Router();
 
@@ -21,7 +22,8 @@ housingsRouter.delete('/:housing_id', userAuth, housingOwnership, adminAuth, del
 
 
 // Routing to /housings/:housing_id
-housingsRouter.use('/:housing_id', userAuth, housingOwnership, areasRouter);
+housingsRouter.use('/:housing_id/areas', userAuth, housingOwnership, areasRouter);
+housingsRouter.use('/:housing_id/users', userAuth, housingOwnership, housingsUsersRouter)
 
 
 
