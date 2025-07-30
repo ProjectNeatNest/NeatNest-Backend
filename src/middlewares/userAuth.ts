@@ -5,7 +5,6 @@ import { AuthorizedRequest, AuthorizedUser } from '../config/types.js';
 
 export function userAuth(req: Request, res: Response, next: NextFunction) {
     const authorization = req.headers.authorization;
-    console.log('Authorization header:', authorization);
 
     if (
         typeof authorization !== 'string' ||
@@ -23,7 +22,6 @@ export function userAuth(req: Request, res: Response, next: NextFunction) {
             process.env.TOKEN_SECRET!
         ) as AuthorizedUser;
 
-        console.log(verifiedUser);
 
         (req as AuthorizedRequest).user = verifiedUser;
 
