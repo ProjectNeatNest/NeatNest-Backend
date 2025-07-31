@@ -4,6 +4,7 @@ import getAllHousings from '../controllers/housings/getAllHousings.js';
 import updateHousing from '../controllers/housings/updateHousing.js';
 import deleteHousing from '../controllers/housings/deleteHousing.js';
 import createUsersHousings from '../controllers/usersHousings/createUsersHousings.js';
+import getOneHousing from '@/controllers/housings/getOneHousing.js';
 
 import { areasRouter } from './housingsAreas.routes.js';
 
@@ -16,6 +17,7 @@ export const housingsRouter = express.Router();
 
 housingsRouter.get('/', userAuth, getAllHousings);
 housingsRouter.post('/', userAuth, createUsersHousings);
+housingsRouter.get('/:housing_id', userAuth, getOneHousing);
 housingsRouter.patch('/:housing_id', userAuth, housingOwnership, updateHousing);
 housingsRouter.delete('/:housing_id', userAuth, housingOwnership, adminAuth, deleteHousing);
 
