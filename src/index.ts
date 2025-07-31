@@ -2,8 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-import { usersRouter } from './routes/users.routes.js';
-import { housingsRouter } from './routes/housings.routes.js';
+import { usersRouter } from '@/routes/users.routes.js';
+import { housingsRouter } from '@/routes/housings.routes.js';
 
 import errorMiddleware from './middlewares/errorMiddleware.js';
 
