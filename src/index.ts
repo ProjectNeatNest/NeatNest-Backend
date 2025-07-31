@@ -4,9 +4,6 @@ import cors from 'cors';
 
 import { usersRouter } from './routes/users.routes.js';
 import { housingsRouter } from './routes/housings.routes.js';
-import { areasRouter } from './routes/housingsAreas.routes.js';
-import { tasksRouter } from './routes/tasks.routes.js';
-import { housingsUsersRouter } from './routes/housingsUsers.routes.js';
 
 import errorMiddleware from './middlewares/errorMiddleware.js';
 

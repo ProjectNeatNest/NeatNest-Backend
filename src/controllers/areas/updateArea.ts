@@ -4,9 +4,7 @@ import { sendQuery } from '../../config/db/dbConfig.js';
 import HTTPError from '../../models/HTTPError.js';
 
 export default async function updateArea(req: Request, res: Response) {
-   console.log('XXXXXXXXXXX');
-   
-   
+  
     const { area_id } = req.params;
 
     const { name } = req.body;
