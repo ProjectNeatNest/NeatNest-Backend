@@ -5,7 +5,6 @@ import createUsersHousings from '../controllers/usersHousings/createUsersHousing
 import updateUsersHousings from '../controllers/usersHousings/updateUsersHousings.js';
 import deleteUsersHousings from '../controllers/usersHousings/deleteUsersHousings.js';
 
-import { userAuth } from '../middlewares/userAuth.js';
 import { adminAuth } from '../middlewares/adminAuth.js';
 
 export const housingsUsersRouter = express.Router({ mergeParams: true });;
