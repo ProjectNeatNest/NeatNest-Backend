@@ -7,7 +7,7 @@ export default async function getOneTask(req: Request, res: Response) {
    const { task_id, area_id } = req.params; 
 
    const [task] = await sendQuery(
-      'SELECT name FROM tasks WHERE task_id = $1 AND area_id = $2',
+      'SELECT * FROM tasks WHERE task_id = $1 AND area_id = $2',
       [task_id, area_id]
    );
 
