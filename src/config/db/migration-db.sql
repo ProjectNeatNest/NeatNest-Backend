@@ -46,22 +46,15 @@ CREATE TABLE IF NOT EXISTS default_areas (
 CREATE TABLE IF NOT EXISTS tasks (
     task_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    area_id INTEGER,
+    user_id INTEGER,
+    area_id INTEGER NOT NULL,
+    limit_date DATE,
+    is_completed BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     duration INTERVAL,
-    periodicity INTEGER,
-    FOREIGN KEY (area_id) REFERENCES areas (area_id)
+    FOREIGN KEY (area_id) REFERENCES areas (area_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
-
-CREATE TABLE IF NOT EXISTS task_details (
-    task_details_id SERIAL PRIMARY KEY, 
-    user_id INTEGER NOT NULL, 
-    limit_date DATE,
-    task_id INTEGER NOT NULL,
-    is_completed BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-    FOREIGN KEY (task_id) REFERENCES tasks (task_id)
-); 
 
 CREATE TABLE IF NOT EXISTS users_housings (
     user_id INTEGER NOT NULL,
