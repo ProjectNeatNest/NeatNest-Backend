@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS tasks (
     user_id INTEGER,
     area_id INTEGER NOT NULL,
     limit_date DATE,
-    is_completed BOOLEAN DEFAULT FALSE,
+    is_completed BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    duration INTERVAL,
+    duration INTEGER,
     FOREIGN KEY (area_id) REFERENCES areas (area_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
