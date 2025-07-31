@@ -10,7 +10,7 @@ import { adminAuth } from '../middlewares/adminAuth.js';
 
 export const housingsUsersRouter = express.Router({ mergeParams: true });;
 
-housingsUsersRouter.get('/', userAuth, getAllUsersHousings);
-housingsUsersRouter.post('/', userAuth, createUsersHousings);
-housingsUsersRouter.patch('/:user_id', userAuth, updateUsersHousings);
-housingsUsersRouter.delete('/:user_id', userAuth, adminAuth, deleteUsersHousings);
+housingsUsersRouter.get('/', getAllUsersHousings);
+housingsUsersRouter.post('/', createUsersHousings);
+housingsUsersRouter.patch('/:user_id', updateUsersHousings);
+housingsUsersRouter.delete('/:user_id', adminAuth, deleteUsersHousings);
