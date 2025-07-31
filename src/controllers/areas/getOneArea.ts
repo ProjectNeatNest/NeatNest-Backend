@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { sendQuery } from '../../config/db/dbConfig.js';
 
 export default async function getOneArea(req: Request, res: Response) {
-   const { housing_id, area_id } = req.body; 
+   const { housing_id, area_id } = req.params; 
 
    const area = await sendQuery(
       'SELECT name FROM areas WHERE housing_id = $1 AND area_id = $2',
