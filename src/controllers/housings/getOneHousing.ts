@@ -7,7 +7,7 @@ export default async function getOneHousing(req: Request, res: Response) {
    const { housing_id } = req.params; 
 
    const [housing] = await sendQuery(
-      'SELECT name FROM housings WHERE housing_id = $1',
+      'SELECT * FROM housings WHERE housing_id = $1',
       [housing_id]
    );
 
