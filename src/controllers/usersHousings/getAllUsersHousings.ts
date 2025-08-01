@@ -14,5 +14,7 @@ export default async function getAllUsersHousings(req: Request, res: Response) {
 
     const users = await sendQuery('SELECT * FROM users WHERE user_id IN (' + userIds.join(',') + ')');
 
-    res.send({ message: 'Users in housing list', data: users });
+    const result = userHousings.map(userHousing => ({...userHousing, ...users.find(user => user.user_id === userHousing.user_id)}))
+
+    res.send({ message: 'Users in housing list', data: result });
 }
