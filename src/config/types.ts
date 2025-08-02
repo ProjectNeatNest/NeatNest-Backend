@@ -38,15 +38,9 @@ export interface Tasks {
     created_at: Date;
     duration: string;
     periodicity: number;
-}
-
-export interface TaskDetails {
-    task_details_id: number;
     user_id: number;
-    limit_date: Date | null;
-    task_id: number;
     is_completed: boolean;
-    created_at: Date;
+    limit_date: Date | null;
 }
 
 export interface UsersHousing {
