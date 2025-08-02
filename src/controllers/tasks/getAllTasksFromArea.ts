@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { sendQuery } from '../../config/db/dbConfig.js';
 import HTTPError from '../../models/HTTPError.js';
 
-export default async function getAllTasks(req: Request, res: Response) {
+export default async function getAllTasksFromArea(req: Request, res: Response) {
    // const { user_id } = (req as AuthorizedRequest).user;
     const { area_id, housing_id } = req.params;
 
