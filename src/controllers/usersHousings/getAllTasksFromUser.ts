@@ -7,7 +7,7 @@ export default async function getAllTasksFromUser(req: Request, res: Response) {
     const { user_id, housing_id } = req.params;
 
     const [userBelongsToHousing] = await sendQuery(
-        'SELECT * FROM users WHERE user_id = $1 AND housing_id = $2',
+        'SELECT * FROM users_housings WHERE user_id = $1 AND housing_id = $2',
         [user_id, housing_id]
     );
 
