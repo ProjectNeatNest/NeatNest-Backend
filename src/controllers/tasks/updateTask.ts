@@ -6,11 +6,11 @@ import HTTPError from '../../models/HTTPError.js';
 export default async function updateTask(req: Request, res: Response) {
     const { task_id } = req.params;
 
-    const { name, area_id, limit_date, duration } = req.body;
+    const { name, area_id, limit_date, duration, is_completed } = req.body;
 
     const [updatedTask] = await sendQuery(
-        'UPDATE tasks SET name = $1, area_id = $2, limit_date = $3, duration = $5 WHERE task_id = $6 RETURNING *',
-        [name, area_id, limit_date, duration, task_id]
+        'UPDATE tasks SET name = $1, area_id = $2, limit_date = $3, duration = $4, is_completed = $5 WHERE task_id = $6 RETURNING *',
+        [name, area_id, limit_date, duration, is_completed, task_id]
     );
 
     if (!updatedTask) throw new HTTPError(404, 'Task not found.');
