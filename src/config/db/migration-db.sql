@@ -1,14 +1,3 @@
-DROP TABLE IF EXISTS users_housing;
-
-DROP TABLE IF EXISTS task_details;
-
-DROP TABLE IF EXISTS tasks;
-
-DROP TABLE IF EXISTS areas;
-
-DROP TABLE IF EXISTS housing;
-
-DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE IF NOT EXISTS users (
@@ -65,3 +54,23 @@ CREATE TABLE IF NOT EXISTS users_housings (
     FOREIGN KEY (housing_id) REFERENCES housings (housing_id)
 );
 
+
+ALTER TABLE areas DROP CONSTRAINT areas_housing_id_fkey;
+ALTER TABLE areas ADD CONSTRAINT areas_housing_id_fkey 
+    FOREIGN KEY (housing_id) REFERENCES housings (housing_id) ON DELETE CASCADE;
+
+ALTER TABLE tasks DROP CONSTRAINT tasks_area_id_fkey;
+ALTER TABLE tasks ADD CONSTRAINT tasks_area_id_fkey 
+    FOREIGN KEY (area_id) REFERENCES areas (area_id) ON DELETE CASCADE;
+
+ALTER TABLE tasks DROP CONSTRAINT tasks_user_id_fkey;
+ALTER TABLE tasks ADD CONSTRAINT tasks_user_id_fkey 
+    FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE SET NULL;
+
+ALTER TABLE users_housings DROP CONSTRAINT users_housings_user_id_fkey;
+ALTER TABLE users_housings ADD CONSTRAINT users_housings_user_id_fkey 
+    FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE;
+
+ALTER TABLE users_housings DROP CONSTRAINT users_housings_housing_id_fkey;
+ALTER TABLE users_housings ADD CONSTRAINT users_housings_housing_id_fkey 
+    FOREIGN KEY (housing_id) REFERENCES housings (housing_id) ON DELETE CASCADE;
