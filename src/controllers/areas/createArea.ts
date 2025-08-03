@@ -7,8 +7,8 @@ export default async function createArea(req: Request, res: Response) {
     const { name: areaName, housing_id } = req.body;
 
     const [areaByName] = await sendQuery(
-        'SELECT * FROM areas WHERE name = $1',
-        [areaName]
+        'SELECT * FROM areas WHERE name = $1 AND housing_id = $2',
+        [areaName, housing_id]
     );
 
     if (areaByName) throw new HTTPError(400, 'Area already exists.');
