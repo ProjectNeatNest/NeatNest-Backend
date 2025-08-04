@@ -11,8 +11,8 @@ export default async function createTask(req: Request, res: Response) {
     }
 
     const [taskByName] = await sendQuery(
-        'SELECT * FROM tasks WHERE name = $1',
-        [name]
+        'SELECT * FROM tasks WHERE name = $1 AND area_id = $2',
+        [name, area_id]
     );
 
     if (taskByName) throw new HTTPError(400, 'Task already exists.');
