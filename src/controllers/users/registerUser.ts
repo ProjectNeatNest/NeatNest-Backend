@@ -20,8 +20,8 @@ export default async function registerUser(req: Request, res: Response) {
         [validatedUser.username]
     );
 
-    if (userByEmail) throw new HTTPError(400, 'Email already exists.');
-    if (userByUsername) throw new HTTPError(400, 'Username already exists.');
+    if (userByEmail) throw new HTTPError(400, 'El email ya existe.');
+    if (userByUsername) throw new HTTPError(400, 'El username ya existe.');
 
     const encryptedPassword = bcrypt.hashSync(validatedUser.password, 10);
 

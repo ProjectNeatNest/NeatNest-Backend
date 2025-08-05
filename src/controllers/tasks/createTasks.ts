@@ -15,7 +15,7 @@ export default async function createTask(req: Request, res: Response) {
         [name, area_id]
     );
 
-    if (taskByName) throw new HTTPError(400, 'Task already exists.');
+    if (taskByName) throw new HTTPError(400, 'La tarea ya existe.');
 
     const [newTask] = await sendQuery(
         'INSERT INTO tasks (name, area_id, user_id, limit_date, duration) VALUES ($1, $2, $3, $4, $5) RETURNING *',

@@ -11,7 +11,7 @@ export default async function createArea(req: Request, res: Response) {
         [areaName, housing_id]
     );
 
-    if (areaByName) throw new HTTPError(400, 'Area already exists.');
+    if (areaByName) throw new HTTPError(400, 'La zona ya existe.');
 
     const [newArea] = await sendQuery(
         'INSERT INTO areas (name, housing_id) VALUES ($1, $2) RETURNING *',

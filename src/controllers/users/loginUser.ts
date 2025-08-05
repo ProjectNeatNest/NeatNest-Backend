@@ -14,12 +14,12 @@ export default async function loginUser(req: Request, res: Response) {
         [email]
     );
 
-    if (!userFound) throw new HTTPError(400, 'Incorrect User and/or password.');
+    if (!userFound) throw new HTTPError(400, 'Usuario o contraseña incorrectos.');
 
     const passwordMatch = bcrypt.compareSync(password, userFound.password);
 
     if (!passwordMatch)
-        throw new HTTPError(400, 'Incorrect User and/or password.');
+        throw new HTTPError(400, 'Usuario o contraseña incorrectos.');
 
     const tokenData = {
         user_id: userFound.user_id,
