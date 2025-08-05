@@ -32,7 +32,7 @@ export default async function loginUser(req: Request, res: Response) {
     });
 
     res.send({
-        message: 'Usuario logueado correctamente.',
+        message: 'Has iniciado sesión.',
         data: { token: token, user: tokenData },
     });
 }
