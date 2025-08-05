@@ -22,5 +22,5 @@ export default async function createTask(req: Request, res: Response) {
         [name, area_id, user_id, limit_date, duration]
     );
 
-    res.status(201).send({ message: 'Task created', data: newTask });
+    res.status(201).send({ message: 'Tarea creada', data: newTask });
 }

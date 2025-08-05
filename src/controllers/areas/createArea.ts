@@ -18,5 +18,5 @@ export default async function createArea(req: Request, res: Response) {
         [areaName, housing_id]
     );
 
-    res.status(201).send({ message: 'Area created', data: newArea });
+    res.status(201).send({ message: 'Zona creada', data: newArea });
 }

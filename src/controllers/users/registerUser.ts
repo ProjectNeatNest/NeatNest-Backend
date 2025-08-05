@@ -48,7 +48,7 @@ export default async function registerUser(req: Request, res: Response) {
     });
 
     res.status(201).send({
-        message: 'User registered',
+        message: 'Se ha registrado correctamente.',
         data: { token: token, user: newUser },
     });
 }
