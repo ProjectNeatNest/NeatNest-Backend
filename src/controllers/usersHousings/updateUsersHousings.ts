@@ -14,10 +14,10 @@ export default async function updateUsersHousings(req: Request, res: Response) {
     );
 
     if (!updatedUserHousing)
-        throw new HTTPError(404, 'User not found in housing.');
+        throw new HTTPError(404, 'Usuario no encontrado en la vivienda.');
 
     res.status(200).send({
-        message: 'User updated in housing',
+        message: 'Usuario actualizado en la vivienda.',
         data: updatedUserHousing,
     });
 }

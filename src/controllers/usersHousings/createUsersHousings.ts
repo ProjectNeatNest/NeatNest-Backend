@@ -35,7 +35,7 @@ export default async function createUsersHousings(req: Request, res: Response) {
     // TODO: Añadir las areas
 
     res.status(201).send({
-        message: 'Housing created successfully',
+        message: 'Vivienda creada correctamente.',
         data: newHousing,
     });
 }

@@ -24,7 +24,7 @@ export default async function deleteUsersHousings(
     );
 
     if (userHousingFound.length === 0) {
-        throw new HTTPError(404, 'User not found in housing.');
+        throw new HTTPError(404, 'Usuario no encontrado en la vivienda.');
     }
 
     if (userHousingFound[0].is_Admin) {
@@ -47,7 +47,7 @@ export default async function deleteUsersHousings(
     );
 
     res.status(200).send({
-        message: 'User deleted from housing',
+        message: 'Usuario eliminado de la vivienda.',
         data: deletedUserHousing,
     });
 }
