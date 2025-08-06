@@ -9,7 +9,7 @@ import errorMiddleware from './middlewares/errorMiddleware.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_DOMAIN }));
 app.use(morgan('dev'));
 app.use(express.json());
 
