@@ -7,6 +7,7 @@
         "dev": "tsx watch src/index.ts",
         "prepare": "husky",
         "init-db": "tsx src/config/db/initDb.ts",
+        "start": "tsc && tsc-alias && node dist/index.js",
         "seed-db": "tsx src/config/db/seed.ts"
     },
     "private": true,
@@ -35,6 +36,7 @@
         "jsonwebtoken": "^9.0.2",
         "morgan": "^1.10.1",
         "pg": "^8.16.3",
+        "tsc-alias": "^1.8.16",
         "zod": "^4.0.2"
     }
 }
