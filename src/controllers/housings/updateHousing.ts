@@ -15,5 +15,5 @@ export default async function updateHousing(req: Request, res: Response) {
 
     if (!updatedHousing) throw new HTTPError(404, 'Housing not found');
 
-    res.status(200).send({ message: 'Housing updated', data: updatedHousing });
+    res.status(200).send({ message: 'Vivienda actulizada.', data: updatedHousing });
 }

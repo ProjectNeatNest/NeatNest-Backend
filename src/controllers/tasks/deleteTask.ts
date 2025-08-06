@@ -18,5 +18,5 @@ export default async function deleteTask(req: Request, res: Response) {
         [task_id]
     );
 
-    res.status(200).send({ message: 'Task deleted', data: deletedTask });
+    res.status(200).send({ message: 'Tarea eliminada.', data: deletedTask });
 }

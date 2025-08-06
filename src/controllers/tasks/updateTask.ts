@@ -15,5 +15,5 @@ export default async function updateTask(req: Request, res: Response) {
 
     if (!updatedTask) throw new HTTPError(404, 'Task not found.');
 
-    res.status(200).send({ message: 'Task updated', data: updatedTask });
+    res.status(200).send({ message: 'Tarea actualizada.', data: updatedTask });
 }

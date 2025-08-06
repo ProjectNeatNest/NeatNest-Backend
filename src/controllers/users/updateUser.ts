@@ -19,5 +19,5 @@ export default async function updateUser(req: Request, res: Response) {
 
     if (!updatedUser) throw new HTTPError(404, 'User not found.');
 
-    res.status(200).send({ message: 'User updated', data: updatedUser });
+    res.status(200).send({ message: 'Usuario actualizado.', data: updatedUser });
 }

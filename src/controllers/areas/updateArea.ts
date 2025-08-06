@@ -16,5 +16,5 @@ export default async function updateArea(req: Request, res: Response) {
 
     if (!updatedArea) throw new HTTPError(404, 'Area not found.');
 
-    res.status(200).send({ message: 'Area updated', data: updatedArea });
+    res.status(200).send({ message: 'Zona actualizada.', data: updatedArea });
 }

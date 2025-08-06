@@ -18,5 +18,5 @@ export default async function deleteArea(req: Request, res: Response) {
         [area_id]
     );
 
-    res.status(200).send({ message: 'Area deleted', data: deletedArea });
+    res.status(200).send({ message: 'Zona eliminada.', data: deletedArea });
 }

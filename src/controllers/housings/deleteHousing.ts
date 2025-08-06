@@ -18,5 +18,5 @@ export default async function deleteHousing(req: Request, res: Response) {
         [housing_id]
     );
 
-    res.status(200).send({ message: 'Housing deleted', data: deletedHousing });
+    res.status(200).send({ message: 'Vivienda eliminada.', data: deletedHousing });
 }

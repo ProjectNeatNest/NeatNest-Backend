@@ -18,5 +18,5 @@ export default async function createHousing(req: Request, res: Response) {
         [housingName]
     );
 
-    res.status(201).send({ message: 'Housing created', data: newHousing });
+    res.status(201).send({ message: 'Vivienda creada.', data: newHousing });
 }
